@@ -5,10 +5,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class BoardController {
+@RequestMapping("/api")
+public class BoardRestController {
     private BoardService boardService;
 
-    public BoardController(BoardService boardService) {
+    public BoardRestController(BoardService boardService) {
         this.boardService = boardService;
     }
 

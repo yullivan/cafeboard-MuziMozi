@@ -3,10 +3,10 @@ package cafeboard.UserInfo;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class UserInfoController {
+public class UserInfoRestController {
     private UserInfoService userInfoService;
 
-    public UserInfoController(UserInfoService userInfoService) {
+    public UserInfoRestController(UserInfoService userInfoService) {
         this.userInfoService = userInfoService;
     }
 

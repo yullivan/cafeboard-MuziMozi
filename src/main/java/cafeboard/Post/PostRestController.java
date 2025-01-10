@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class PostController {
+public class PostRestController {
     private PostService postService;
 
-    public PostController(PostService postService) {
+    public PostRestController(PostService postService) {
         this.postService = postService;
     }
 

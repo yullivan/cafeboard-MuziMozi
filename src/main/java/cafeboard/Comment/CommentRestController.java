@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class CommentController {
+public class CommentRestController {
     private CommentService commentService;
 
-    public CommentController(CommentService commentService) {
+    public CommentRestController(CommentService commentService) {
         this.commentService = commentService;
     }
 
