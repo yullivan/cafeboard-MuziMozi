@@ -4,9 +4,11 @@ import cafeboard.Board.Board;
 import cafeboard.UserInfo.UserInfo;
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
+@EntityListeners(AuditingEntityListener.class)
 @Entity
 public class Post {
 
@@ -87,5 +89,9 @@ public class Post {
 
     public void setViewCount(int viewCount) {
         this.viewCount = viewCount;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
     }
 }
