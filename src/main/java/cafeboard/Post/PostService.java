@@ -20,9 +20,10 @@ public class PostService {
         this.commentRepository = commentRepository;
     }
 
-    public void createPost(String title, String content, Long boardId) {
+    public PostCreateResponseDTO createPost(String title, String content, Long boardId) {
 
-        postRepository.save(new Post(title, content, boardRepository.findById(boardId).orElseThrow()));
+        Post post = postRepository.save(new Post(title, content, boardRepository.findById(boardId).orElseThrow()));
+        return new PostCreateResponseDTO(post.getId(), post.getTitle(), post.getContent(), post.getCreatedAt() ,post.getViewCount());
     }
 
     public List<PostResponseDTO> findAllPost(Long boardID) {

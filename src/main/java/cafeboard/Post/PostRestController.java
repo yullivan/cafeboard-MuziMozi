@@ -27,9 +27,9 @@ public class PostRestController {
     }
 
     @PostMapping("/posts")
-    public void createPost(@RequestBody PostRequestDTO request) {
+    public PostCreateResponseDTO createPost(@RequestBody PostRequestDTO request) {
 
-        postService.createPost(request.title(), request.content(), request.boardId());
+        return postService.createPost(request.title(), request.content(), request.boardId());
     }
 
     @PutMapping("/posts/{postId}")
