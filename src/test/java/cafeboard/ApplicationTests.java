@@ -78,4 +78,66 @@ class ApplicationTests {
 		assertThat(boards).hasSize(1);
 	}
 
+	@DisplayName("게시판 하나의 이름을 수정한다.")
+	@Test
+	void updateBoards() {
+		// given
+		// 게시판 생성
+		RestAssured
+				.given()
+				.contentType(ContentType.JSON)
+				.body(new BoardRequestDTO("공지사항"))
+				.when()
+				.post("/api/boards")
+				.then()
+				.statusCode(HttpStatus.OK.value());
+
+		// when
+		// 게시판 이름 수정
+		BoardResponseDTO board = RestAssured
+				.given()
+				.contentType(ContentType.JSON)
+				.body(new BoardRequestDTO("자유게시판"))
+				.when()
+				.put("/api/boards/1")
+				.then()
+				.statusCode(HttpStatus.OK.value())
+				.extract()
+				.as(BoardResponseDTO.class);
+
+		// then
+		assertThat(board.boardName()).isEqualTo("자유게시판");
+	}
+
+	@DisplayName("게시판 하나를 삭제한다.")
+	@Test
+	void deleteBoards() {
+		// given
+		RestAssured
+				.given()
+				.contentType(ContentType.JSON)
+				.body(new BoardRequestDTO("공지사항"))
+				.when()
+				.post("/api/boards")
+				.then()
+				.statusCode(HttpStatus.OK.value());
+
+		// when
+		RestAssured
+				.given()
+				.when()
+				.delete("/api/boards/1")
+				.then()
+				.statusCode(HttpStatus.OK.value());
+
+		// then
+		RestAssured
+				.given()
+				.when()
+				.get("/api/boards/1")
+				.then()
+				.statusCode(500);
+	}
+
+
 }
