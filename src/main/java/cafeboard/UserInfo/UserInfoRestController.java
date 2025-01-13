@@ -3,6 +3,7 @@ package cafeboard.UserInfo;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api")
 public class UserInfoRestController {
     private UserInfoService userInfoService;
 
