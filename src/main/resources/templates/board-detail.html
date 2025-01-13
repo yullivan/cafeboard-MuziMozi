@@ -68,7 +68,8 @@
   </div>
 
   <div class="create-post">
-    <button class="create-post-btn" onclick="location.href='/boards/{boardId}/create-post'">게시글 작성</button> <!-- 게시글 작성 버튼 -->
+    <!-- board.id를 동적으로 삽입하여 게시글 작성 페이지로 이동 -->
+    <button class="create-post-btn" th:onclick="'location.href=\'/boards/' + ${board.id} + '/create-post\''">게시글 작성</button>
   </div>
 
   <h3>게시글 목록</h3>
