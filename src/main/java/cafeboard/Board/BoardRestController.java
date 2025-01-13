@@ -23,7 +23,7 @@ public class BoardRestController {
         return boardService.findAllBoard();
     }
 
-    @GetMapping("/board/{boardId}")
+    @GetMapping("/boards/{boardId}")
     public BoardResponseDTO findBoard(@PathVariable Long boardId) {
         return boardService.findBoardById(boardId);
     }
