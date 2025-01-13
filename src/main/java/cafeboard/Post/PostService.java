@@ -30,6 +30,7 @@ public class PostService {
         List<Post> posts = postRepository.findByBoardId(boardID);
         return posts.stream().map(post -> new PostResponseDTO(
                     post.getId(),
+                    post.getTitle(),
                     post.getContent(),
                     post.getCreatedAt(),
                     commentRepository.countByPostId(post.getId()),
@@ -41,6 +42,7 @@ public class PostService {
         Post post = postRepository.findById(postId).orElseThrow();
         return new PostResponseDTO(
                 post.getId(),
+                post.getTitle(),
                 post.getContent(),
                 post.getCreatedAt(),
                 commentRepository.countByPostId(post.getId()),
