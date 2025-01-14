@@ -7,7 +7,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class BoardRestController {
-    private BoardService boardService;
+    private final BoardService boardService;
 
     public BoardRestController(BoardService boardService) {
         this.boardService = boardService;

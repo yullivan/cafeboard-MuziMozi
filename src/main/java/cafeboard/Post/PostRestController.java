@@ -20,7 +20,7 @@ public class PostRestController {
     }
 
     @GetMapping("/posts/{postId}")
-    public PostResponseDTO getPost(@PathVariable Long postId) {
+    public PostDetailResponseDTO getPost(@PathVariable Long postId) {
 
         postService.increaseViewCount(postId);
         return postService.findPostById(postId);
@@ -33,10 +33,9 @@ public class PostRestController {
     }
 
     @PutMapping("/posts/{postId}")
-    public PostResponseDTO updatePost(@PathVariable Long postId, @RequestBody PostRequestDTO request) {
+    public PostDetailResponseDTO updatePost(@PathVariable Long postId, @RequestBody PostRequestDTO request) {
 
-        postService.updatePost(postId, request);
-        return postService.findPostById(postId);
+        return postService.updatePost(postId, request);
     }
 
     @DeleteMapping("/posts/{postId}")

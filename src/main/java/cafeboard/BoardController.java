@@ -26,7 +26,7 @@ class BoardController {
     public String readAllBoards(Model model) {
         List<BoardResponseDTO> boards = boardService.findAllBoard(); // 게시판 목록 가져오기
         model.addAttribute("boards", boards); // 모델에 데이터 추가
-        return "/index"; // main.html 렌더링
+        return "index"; // main.html 렌더링
     }
 
     @GetMapping("/create-board")

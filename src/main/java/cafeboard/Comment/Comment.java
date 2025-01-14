@@ -23,10 +23,11 @@ public class Comment {
     private String author;
 
     @CreatedDate
-    @Column(nullable = false)
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Post post;
     @ManyToOne
     private UserInfo userInfo;

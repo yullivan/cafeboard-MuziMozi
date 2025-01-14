@@ -9,13 +9,13 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String boardName;
 
 //    @OneToMany(mappedBy = "board")
 //    private List<Post> posts;
 
-    public Board() {
+    protected Board() {
     }
 
     public Board(String boardName) {

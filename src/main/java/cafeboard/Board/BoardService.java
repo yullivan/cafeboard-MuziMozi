@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 
 @Service
 public class BoardService {
-    private BoardRepository boardRepository;
+    private final BoardRepository boardRepository;
 
     public BoardService(BoardRepository boardRepository) {
         this.boardRepository = boardRepository;
@@ -44,6 +44,6 @@ public class BoardService {
 
     public void deleteBoard(Long boardId) {
 
-        boardRepository.delete(boardRepository.findById(boardId).orElseThrow());
+        boardRepository.delete(boardRepository.findById(boardId).orElseThrow(() -> new NoSuchElementException("해당 ID의 게시판이 존재하지 않습니다!")));
     }
 }
