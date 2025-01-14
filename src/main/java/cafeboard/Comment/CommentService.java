@@ -28,9 +28,11 @@ public class CommentService {
                 )).toList();
     }
 
-    public void createComment(String content, String author, Long postId) {
+    public CommentResponseDTO createComment(String content, String author, Long postId) {
 
-        commentRepository.save(new Comment(content, author, postRepository.findById(postId).orElseThrow()));
+        Comment comment = commentRepository.save(
+                new Comment(content, author, postRepository.findById(postId).orElseThrow()));
+        return new CommentResponseDTO(comment.getId(), comment.getContent(), comment.getCreatedAt(), comment.getAuthor());
     }
 
     public void updateComment(Long commentId, CommentRequestDTO request) {

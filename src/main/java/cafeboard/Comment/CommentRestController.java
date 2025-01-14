@@ -20,9 +20,9 @@ public class CommentRestController {
     }
 
     @PostMapping("/comments")
-    public void createComment(@RequestBody CommentRequestDTO request) {
+    public CommentResponseDTO createComment(@RequestBody CommentRequestDTO request) {
 
-        commentService.createComment(request.content(), request.author(), request.postId());
+        return commentService.createComment(request.content(), request.author(), request.postId());
     }
 
     @PutMapping("/comments/{commentId}")
